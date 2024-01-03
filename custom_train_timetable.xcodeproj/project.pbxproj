@@ -14,6 +14,14 @@
 		59235DE82B457AD90099CA01 /* custom_train_timetableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59235DE72B457AD90099CA01 /* custom_train_timetableTests.swift */; };
 		59235DF22B457AD90099CA01 /* custom_train_timetableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59235DF12B457AD90099CA01 /* custom_train_timetableUITests.swift */; };
 		59235DF42B457AD90099CA01 /* custom_train_timetableUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59235DF32B457AD90099CA01 /* custom_train_timetableUITestsLaunchTests.swift */; };
+		59235E072B457B100099CA01 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59235E062B457B100099CA01 /* WidgetKit.framework */; };
+		59235E092B457B100099CA01 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59235E082B457B100099CA01 /* SwiftUI.framework */; };
+		59235E0C2B457B100099CA01 /* custom_train_timetable_widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59235E0B2B457B100099CA01 /* custom_train_timetable_widgetBundle.swift */; };
+		59235E0E2B457B100099CA01 /* custom_train_timetable_widgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59235E0D2B457B100099CA01 /* custom_train_timetable_widgetLiveActivity.swift */; };
+		59235E102B457B100099CA01 /* custom_train_timetable_widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59235E0F2B457B100099CA01 /* custom_train_timetable_widget.swift */; };
+		59235E122B457B100099CA01 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59235E112B457B100099CA01 /* AppIntent.swift */; };
+		59235E142B457B120099CA01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59235E132B457B120099CA01 /* Assets.xcassets */; };
+		59235E182B457B120099CA01 /* custom_train_timetable_widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 59235E042B457B100099CA01 /* custom_train_timetable_widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +39,28 @@
 			remoteGlobalIDString = 59235DD22B457AD80099CA01;
 			remoteInfo = custom_train_timetable;
 		};
+		59235E162B457B120099CA01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59235DCB2B457AD70099CA01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 59235E032B457B100099CA01;
+			remoteInfo = custom_train_timetable_widgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		59235E1C2B457B120099CA01 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				59235E182B457B120099CA01 /* custom_train_timetable_widgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		59235DD32B457AD80099CA01 /* custom_train_timetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = custom_train_timetable.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +73,15 @@
 		59235DED2B457AD90099CA01 /* custom_train_timetableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = custom_train_timetableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59235DF12B457AD90099CA01 /* custom_train_timetableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = custom_train_timetableUITests.swift; sourceTree = "<group>"; };
 		59235DF32B457AD90099CA01 /* custom_train_timetableUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = custom_train_timetableUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		59235E042B457B100099CA01 /* custom_train_timetable_widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = custom_train_timetable_widgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		59235E062B457B100099CA01 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		59235E082B457B100099CA01 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		59235E0B2B457B100099CA01 /* custom_train_timetable_widgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = custom_train_timetable_widgetBundle.swift; sourceTree = "<group>"; };
+		59235E0D2B457B100099CA01 /* custom_train_timetable_widgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = custom_train_timetable_widgetLiveActivity.swift; sourceTree = "<group>"; };
+		59235E0F2B457B100099CA01 /* custom_train_timetable_widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = custom_train_timetable_widget.swift; sourceTree = "<group>"; };
+		59235E112B457B100099CA01 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		59235E132B457B120099CA01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		59235E152B457B120099CA01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +106,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		59235E012B457B100099CA01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59235E092B457B100099CA01 /* SwiftUI.framework in Frameworks */,
+				59235E072B457B100099CA01 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,6 +124,8 @@
 				59235DD52B457AD80099CA01 /* custom_train_timetable */,
 				59235DE62B457AD90099CA01 /* custom_train_timetableTests */,
 				59235DF02B457AD90099CA01 /* custom_train_timetableUITests */,
+				59235E0A2B457B100099CA01 /* custom_train_timetable_widget */,
+				59235E052B457B100099CA01 /* Frameworks */,
 				59235DD42B457AD80099CA01 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,6 +136,7 @@
 				59235DD32B457AD80099CA01 /* custom_train_timetable.app */,
 				59235DE32B457AD90099CA01 /* custom_train_timetableTests.xctest */,
 				59235DED2B457AD90099CA01 /* custom_train_timetableUITests.xctest */,
+				59235E042B457B100099CA01 /* custom_train_timetable_widgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,6 +177,28 @@
 			path = custom_train_timetableUITests;
 			sourceTree = "<group>";
 		};
+		59235E052B457B100099CA01 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59235E062B457B100099CA01 /* WidgetKit.framework */,
+				59235E082B457B100099CA01 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59235E0A2B457B100099CA01 /* custom_train_timetable_widget */ = {
+			isa = PBXGroup;
+			children = (
+				59235E0B2B457B100099CA01 /* custom_train_timetable_widgetBundle.swift */,
+				59235E0D2B457B100099CA01 /* custom_train_timetable_widgetLiveActivity.swift */,
+				59235E0F2B457B100099CA01 /* custom_train_timetable_widget.swift */,
+				59235E112B457B100099CA01 /* AppIntent.swift */,
+				59235E132B457B120099CA01 /* Assets.xcassets */,
+				59235E152B457B120099CA01 /* Info.plist */,
+			);
+			path = custom_train_timetable_widget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,10 +209,12 @@
 				59235DCF2B457AD80099CA01 /* Sources */,
 				59235DD02B457AD80099CA01 /* Frameworks */,
 				59235DD12B457AD80099CA01 /* Resources */,
+				59235E1C2B457B120099CA01 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				59235E172B457B120099CA01 /* PBXTargetDependency */,
 			);
 			name = custom_train_timetable;
 			productName = custom_train_timetable;
@@ -183,6 +257,23 @@
 			productReference = 59235DED2B457AD90099CA01 /* custom_train_timetableUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		59235E032B457B100099CA01 /* custom_train_timetable_widgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59235E192B457B120099CA01 /* Build configuration list for PBXNativeTarget "custom_train_timetable_widgetExtension" */;
+			buildPhases = (
+				59235E002B457B100099CA01 /* Sources */,
+				59235E012B457B100099CA01 /* Frameworks */,
+				59235E022B457B100099CA01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = custom_train_timetable_widgetExtension;
+			productName = custom_train_timetable_widgetExtension;
+			productReference = 59235E042B457B100099CA01 /* custom_train_timetable_widgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -204,6 +295,9 @@
 						CreatedOnToolsVersion = 15.0.1;
 						TestTargetID = 59235DD22B457AD80099CA01;
 					};
+					59235E032B457B100099CA01 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
 				};
 			};
 			buildConfigurationList = 59235DCE2B457AD70099CA01 /* Build configuration list for PBXProject "custom_train_timetable" */;
@@ -222,6 +316,7 @@
 				59235DD22B457AD80099CA01 /* custom_train_timetable */,
 				59235DE22B457AD90099CA01 /* custom_train_timetableTests */,
 				59235DEC2B457AD90099CA01 /* custom_train_timetableUITests */,
+				59235E032B457B100099CA01 /* custom_train_timetable_widgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -247,6 +342,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59235E022B457B100099CA01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59235E142B457B120099CA01 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +382,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		59235E002B457B100099CA01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59235E0E2B457B100099CA01 /* custom_train_timetable_widgetLiveActivity.swift in Sources */,
+				59235E122B457B100099CA01 /* AppIntent.swift in Sources */,
+				59235E102B457B100099CA01 /* custom_train_timetable_widget.swift in Sources */,
+				59235E0C2B457B100099CA01 /* custom_train_timetable_widgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -291,6 +405,11 @@
 			isa = PBXTargetDependency;
 			target = 59235DD22B457AD80099CA01 /* custom_train_timetable */;
 			targetProxy = 59235DEE2B457AD90099CA01 /* PBXContainerItemProxy */;
+		};
+		59235E172B457B120099CA01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 59235E032B457B100099CA01 /* custom_train_timetable_widgetExtension */;
+			targetProxy = 59235E162B457B120099CA01 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -417,6 +536,7 @@
 		59235DF82B457AD90099CA01 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -446,6 +566,7 @@
 		59235DF92B457AD90099CA01 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -548,6 +669,60 @@
 			};
 			name = Release;
 		};
+		59235E1A2B457B120099CA01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YLQ87669KV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = custom_train_timetable_widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = custom_train_timetable_widget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.custom-train-timetable.custom-train-timetable-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		59235E1B2B457B120099CA01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YLQ87669KV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = custom_train_timetable_widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = custom_train_timetable_widget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.custom-train-timetable.custom-train-timetable-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -583,6 +758,15 @@
 			buildConfigurations = (
 				59235DFE2B457AD90099CA01 /* Debug */,
 				59235DFF2B457AD90099CA01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59235E192B457B120099CA01 /* Build configuration list for PBXNativeTarget "custom_train_timetable_widgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59235E1A2B457B120099CA01 /* Debug */,
+				59235E1B2B457B120099CA01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
