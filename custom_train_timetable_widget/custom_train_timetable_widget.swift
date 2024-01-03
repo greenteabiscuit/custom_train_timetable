@@ -10,11 +10,11 @@ import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "bad")
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+        SimpleEntry(date: Date(), configuration: configuration, id: "bad")
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
@@ -24,7 +24,7 @@ struct Provider: AppIntentTimelineProvider {
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+            let entry = SimpleEntry(date: entryDate, configuration: configuration, id: configuration.character.id)
             entries.append(entry)
         }
 
@@ -35,6 +35,7 @@ struct Provider: AppIntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationAppIntent
+    let id: String
 }
 
 struct custom_train_timetable_widgetEntryView : View {
@@ -46,6 +47,7 @@ struct custom_train_timetable_widgetEntryView : View {
             Text(entry.date, style: .time)
 
             Text("Favorite Emoji:")
+            Text(entry.id)
         }
     }
 }
@@ -63,12 +65,12 @@ struct custom_train_timetable_widget: Widget {
 
 extension ConfigurationAppIntent {
     fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
+        let intent = ConfigurationAppIntent(character: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, heroType: "something"))
         return intent
     }
     
     fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
+        let intent = ConfigurationAppIntent(character: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, heroType: "something"))
         return intent
     }
 }
@@ -76,6 +78,6 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     custom_train_timetable_widget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
+    SimpleEntry(date: .now, configuration: .smiley, id: "bad")
+    SimpleEntry(date: .now, configuration: .starEyes, id: "bad")
 }
