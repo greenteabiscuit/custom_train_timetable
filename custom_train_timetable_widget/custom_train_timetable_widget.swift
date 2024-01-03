@@ -10,7 +10,10 @@ import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
     static var weekdaySchedule: [TimePoint] = [
-        TimePoint(hour: 23, min: 31, origin: "東十条", dest: "武蔵小杉"),
+        TimePoint(hour: 10, min: 41, origin: "東十条", dest: "蒲田"),
+        TimePoint(hour: 10, min: 56, origin: "東十条", dest: "蒲田"),
+        TimePoint(hour: 11, min: 11, origin: "東十条", dest: "蒲田"),
+        TimePoint(hour: 23, min: 23, origin: "東十条", dest: "蒲田"),
     ]
 
     static var weekendSchedule: [TimePoint] = [
@@ -127,14 +130,54 @@ struct custom_train_timetable_widgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.id)
+        HStack {
+            VStack(alignment: .leading) {
+                Spacer()
+                contentView
+                Spacer()
+            }
+            VStack(alignment: .leading) {
+                Text("次のダイヤ")
+                    .foregroundColor(.gray)
+                if entry.secondClosestDate != nil {
+                    Text("\(entry.secondClosestDate!, formatter: Self.dateFormatter)")
+                    .foregroundColor(.gray)
+                } else {
+                    Text("本日は終了しました")
+                    .foregroundColor(.gray)
+                }
+                    
+            }
+        }
+        .containerBackground(.clear, for: .widget)
+    }
+    
+    @ViewBuilder
+    private var contentView: some View {
+        HStack {
+            Circle()
+                .fill(Color.green)
+                .frame(width: 10, height: 10)
+            Text("\(entry.id)\n赤羽岩淵発")
+                .font(.system(size: 15))
+            if entry.closestDate != nil {
+                Text("\(entry.closestDate!, formatter: Self.dateFormatter)")
+            } else {
+                Text("本日は終了しました")
+            }
+        }
+        if entry.closestDate != nil {
+            Text(entry.closestDate!, style: .timer)
+                .font(.system(size: 30))
         }
     }
+    
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = .init(identifier: "en_US_POSIX")
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
 }
 
 struct custom_train_timetable_widget: Widget {
