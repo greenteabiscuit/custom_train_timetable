@@ -14,10 +14,10 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
 
 
     @Parameter(title: "Character")
-    var character: CharacterDetail
+    var character: StationName
 
 
-    init(character: CharacterDetail) {
+    init(character: StationName) {
         self.character = character
     }
 
@@ -26,7 +26,7 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
     }
 }
 
-struct CharacterDetail: AppEntity {
+struct StationName: AppEntity {
     let id: String
     let avatar: String
     let healthLevel: Double
@@ -41,23 +41,23 @@ struct CharacterDetail: AppEntity {
     }
 
 
-    static let allCharacters: [CharacterDetail] = [
-        CharacterDetail(id: "Power Panda", avatar: "🐼", healthLevel: 0.14, heroType: "Forest Dweller"),
-        CharacterDetail(id: "Unipony", avatar: "🦄", healthLevel: 0.67, heroType: "Free Rangers"),
-        CharacterDetail(id: "Spouty", avatar: "🐳", healthLevel: 0.83, heroType: "Deep Sea Goer")
+    static let allCharacters: [StationName] = [
+        StationName(id: "Power Panda", avatar: "🐼", healthLevel: 0.14, heroType: "Forest Dweller"),
+        StationName(id: "Unipony", avatar: "🦄", healthLevel: 0.67, heroType: "Free Rangers"),
+        StationName(id: "Spouty", avatar: "🐳", healthLevel: 0.83, heroType: "Deep Sea Goer")
     ]
 }
 
 struct CharacterQuery: EntityQuery {
-    func entities(for identifiers: [CharacterDetail.ID]) async throws -> [CharacterDetail] {
-        CharacterDetail.allCharacters.filter { identifiers.contains($0.id) }
+    func entities(for identifiers: [StationName.ID]) async throws -> [StationName] {
+        StationName.allCharacters.filter { identifiers.contains($0.id) }
     }
     
-    func suggestedEntities() async throws -> [CharacterDetail] {
-        CharacterDetail.allCharacters.filter { $0.isAvailable }
+    func suggestedEntities() async throws -> [StationName] {
+        StationName.allCharacters.filter { $0.isAvailable }
     }
     
-    func defaultResult() async -> CharacterDetail? {
+    func defaultResult() async -> StationName? {
         try? await suggestedEntities().first
     }
 }
