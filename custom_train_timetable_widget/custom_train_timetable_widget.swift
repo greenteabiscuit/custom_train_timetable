@@ -157,9 +157,15 @@ struct custom_train_timetable_widgetEntryView : View {
     @ViewBuilder
     private var contentView: some View {
         HStack {
-            Circle()
-                .fill(Color.green)
-                .frame(width: 10, height: 10)
+            if entry.id == "東十条" {
+                Circle()
+                    .fill(Color(red: 0.39, green: 0.82, blue: 1.00))
+                    .frame(width: 10, height: 10)
+            } else {
+                Circle()
+                    .fill(Color.green)
+                    .frame(width: 10, height: 10)
+            }
             Text("\(entry.id)\n\(entry.origin)発")
                 .font(.system(size: 15))
             if entry.closestDate != nil {

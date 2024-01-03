@@ -9,11 +9,11 @@ import WidgetKit
 import AppIntents
 
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
-    static var title: LocalizedStringResource = "Select Character"
-    static var description = IntentDescription("Selects the character to display information for.")
+    static var title: LocalizedStringResource = "Select Station"
+    static var description = IntentDescription("Selects the station to display information for.")
 
 
-    @Parameter(title: "Character")
+    @Parameter(title: "station")
     var station: StationName
 
 
