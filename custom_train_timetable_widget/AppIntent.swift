@@ -14,11 +14,11 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
 
 
     @Parameter(title: "Character")
-    var character: StationName
+    var station: StationName
 
 
-    init(character: StationName) {
-        self.character = character
+    init(station: StationName) {
+        self.station = station
     }
 
 
@@ -33,28 +33,28 @@ struct StationName: AppEntity {
     let heroType: String
     let isAvailable = true
     
-    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Character"
-    static var defaultQuery = CharacterQuery()
+    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Station"
+    static var defaultQuery = StationQuery()
             
     var displayRepresentation: DisplayRepresentation {
         DisplayRepresentation(title: "\(avatar) \(id)")
     }
 
 
-    static let allCharacters: [StationName] = [
-        StationName(id: "Power Panda", avatar: "🐼", healthLevel: 0.14, heroType: "Forest Dweller"),
-        StationName(id: "Unipony", avatar: "🦄", healthLevel: 0.67, heroType: "Free Rangers"),
-        StationName(id: "Spouty", avatar: "🐳", healthLevel: 0.83, heroType: "Deep Sea Goer")
+    static let allStations: [StationName] = [
+        StationName(id: "東十条", avatar: "🐼", healthLevel: 0.14, heroType: "南浦和"),
+        StationName(id: "王子神谷", avatar: "🦄", healthLevel: 0.67, heroType: "赤羽岩淵"),
+        StationName(id: "赤羽", avatar: "🐳", healthLevel: 0.83, heroType: "南浦和")
     ]
 }
 
-struct CharacterQuery: EntityQuery {
+struct StationQuery: EntityQuery {
     func entities(for identifiers: [StationName.ID]) async throws -> [StationName] {
-        StationName.allCharacters.filter { identifiers.contains($0.id) }
+        StationName.allStations.filter { identifiers.contains($0.id) }
     }
     
     func suggestedEntities() async throws -> [StationName] {
-        StationName.allCharacters.filter { $0.isAvailable }
+        StationName.allStations.filter { $0.isAvailable }
     }
     
     func defaultResult() async -> StationName? {

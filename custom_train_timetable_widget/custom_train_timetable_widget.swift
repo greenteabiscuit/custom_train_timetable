@@ -13,6 +13,7 @@ struct Provider: AppIntentTimelineProvider {
         TimePoint(hour: 10, min: 41, origin: "東十条", dest: "蒲田"),
         TimePoint(hour: 10, min: 56, origin: "東十条", dest: "蒲田"),
         TimePoint(hour: 11, min: 11, origin: "東十条", dest: "蒲田"),
+        TimePoint(hour: 11, min: 31, origin: "東十条", dest: "蒲田"),
         TimePoint(hour: 23, min: 23, origin: "東十条", dest: "蒲田"),
     ]
 
@@ -38,11 +39,11 @@ struct Provider: AppIntentTimelineProvider {
         }
     }
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "bad")
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "bad", origin: "nowhere")
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration, id: "bad")
+        SimpleEntry(date: Date(), configuration: configuration, id: "bad", origin: "nowhere")
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
@@ -53,7 +54,7 @@ struct Provider: AppIntentTimelineProvider {
             let date = Calendar.current.date(byAdding: .second, value: $0 * 60 - 1, to: startDate)!
             let otherDate = Calendar.current.date(byAdding: .second, value: $0 * 60, to: startDate)!
             let (first, second) = getNextSchedule(now: otherDate)
-            return SimpleEntry(date: date, configuration: configuration, id: configuration.character.id, closestDate: first, secondClosestDate: second)
+            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: configuration.station.heroType)
         }
 
         return Timeline(entries: entries, policy: .atEnd)
@@ -124,6 +125,7 @@ struct SimpleEntry: TimelineEntry {
     let id: String
     var closestDate: Date? = .now
     var secondClosestDate: Date? = .now
+    let origin: String
 }
 
 struct custom_train_timetable_widgetEntryView : View {
@@ -158,7 +160,7 @@ struct custom_train_timetable_widgetEntryView : View {
             Circle()
                 .fill(Color.green)
                 .frame(width: 10, height: 10)
-            Text("\(entry.id)\n赤羽岩淵発")
+            Text("\(entry.id)\n\(entry.origin)発")
                 .font(.system(size: 15))
             if entry.closestDate != nil {
                 Text("\(entry.closestDate!, formatter: Self.dateFormatter)")
@@ -193,12 +195,12 @@ struct custom_train_timetable_widget: Widget {
 
 extension ConfigurationAppIntent {
     fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent(character: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, heroType: "something"))
+        let intent = ConfigurationAppIntent(station: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, heroType: "something"))
         return intent
     }
     
     fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent(character: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, heroType: "something"))
+        let intent = ConfigurationAppIntent(station: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, heroType: "something"))
         return intent
     }
 }
@@ -206,8 +208,8 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     custom_train_timetable_widget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley, id: "bad")
-    SimpleEntry(date: .now, configuration: .starEyes, id: "bad")
+    SimpleEntry(date: .now, configuration: .smiley, id: "bad", origin: "nowhere")
+    SimpleEntry(date: .now, configuration: .starEyes, id: "bad", origin: "nowhere")
 }
 
 
