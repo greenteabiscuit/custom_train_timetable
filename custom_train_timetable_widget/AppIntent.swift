@@ -30,7 +30,7 @@ struct StationName: AppEntity {
     let id: String
     let avatar: String
     let healthLevel: Double
-    let heroType: String
+    let origin: String
     let isAvailable = true
     
     static var typeDisplayRepresentation: TypeDisplayRepresentation = "Station"
@@ -42,9 +42,9 @@ struct StationName: AppEntity {
 
 
     static let allStations: [StationName] = [
-        StationName(id: "東十条", avatar: "🐼", healthLevel: 0.14, heroType: "南浦和"),
-        StationName(id: "王子神谷", avatar: "🦄", healthLevel: 0.67, heroType: "赤羽岩淵"),
-        StationName(id: "赤羽", avatar: "🐳", healthLevel: 0.83, heroType: "南浦和")
+        StationName(id: "東十条", avatar: "🐼", healthLevel: 0.14, origin: "南浦和"),
+        StationName(id: "王子神谷", avatar: "🦄", healthLevel: 0.67, origin: "赤羽岩淵"),
+        StationName(id: "赤羽", avatar: "🐳", healthLevel: 0.83, origin: "南浦和")
     ]
 }
 

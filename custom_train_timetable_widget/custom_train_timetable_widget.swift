@@ -54,7 +54,7 @@ struct Provider: AppIntentTimelineProvider {
             let date = Calendar.current.date(byAdding: .second, value: $0 * 60 - 1, to: startDate)!
             let otherDate = Calendar.current.date(byAdding: .second, value: $0 * 60, to: startDate)!
             let (first, second) = getNextSchedule(now: otherDate)
-            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: configuration.station.heroType)
+            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: configuration.station.origin)
         }
 
         return Timeline(entries: entries, policy: .atEnd)
@@ -195,12 +195,12 @@ struct custom_train_timetable_widget: Widget {
 
 extension ConfigurationAppIntent {
     fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent(station: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, heroType: "something"))
+        let intent = ConfigurationAppIntent(station: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, origin: "something"))
         return intent
     }
     
     fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent(station: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, heroType: "something"))
+        let intent = ConfigurationAppIntent(station: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, origin: "something"))
         return intent
     }
 }
