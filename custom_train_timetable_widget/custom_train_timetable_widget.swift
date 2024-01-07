@@ -10,15 +10,20 @@ import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
     static var weekdaySchedule: [TimePoint] = [
-        TimePoint(hour: 10, min: 41, origin: "東十条", dest: "蒲田"),
-        TimePoint(hour: 10, min: 56, origin: "東十条", dest: "蒲田"),
-        TimePoint(hour: 11, min: 11, origin: "東十条", dest: "蒲田"),
-        TimePoint(hour: 11, min: 31, origin: "東十条", dest: "蒲田"),
-        TimePoint(hour: 23, min: 23, origin: "東十条", dest: "蒲田"),
+        TimePoint(hour: 10, min: 31, origin: "赤羽", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 10, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 10, min: 56, origin: "南浦和", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 11, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 11, min: 31, origin: "南浦和", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 11, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 11, min: 51, origin: "南浦和", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 12, min: 01, origin: "南浦和", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 12, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 23, min: 23, origin: "南浦和", dest: "蒲田", departure: "東十条"),
     ]
 
     static var weekendSchedule: [TimePoint] = [
-        TimePoint(hour: 23, min: 31, origin: "東十条", dest: "武蔵小杉"),
+        TimePoint(hour: 23, min: 31, origin: "東十条", dest: "武蔵小杉", departure: "東十条"),
     ]
     
     // Define the class with two Int fields: hour and min
@@ -27,23 +32,25 @@ struct Provider: AppIntentTimelineProvider {
         var min: Int
         var date: Date
         var origin: String
+        var departure: String
         var dest: String
         
-        init(hour: Int, min: Int, origin: String, dest: String) {
+        init(hour: Int, min: Int, origin: String, dest: String, departure: String) {
             let today = Calendar.current.startOfDay(for: Date())
             self.hour = hour
             self.min = min
             self.date = Calendar.current.date(bySettingHour: hour, minute: min, second: 0, of: today)!
             self.dest = dest
             self.origin = origin
+            self.departure = departure
         }
     }
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "bad", origin: "nowhere")
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "bad", origin: "nowhere", departure: "nowhere")
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration, id: "bad", origin: "nowhere")
+        SimpleEntry(date: Date(), configuration: configuration, id: "bad", origin: "nowhere", departure: "nowhere")
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
@@ -54,7 +61,7 @@ struct Provider: AppIntentTimelineProvider {
             let date = Calendar.current.date(byAdding: .second, value: $0 * 60 - 1, to: startDate)!
             let otherDate = Calendar.current.date(byAdding: .second, value: $0 * 60, to: startDate)!
             let (first, second) = getNextSchedule(now: otherDate)
-            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: configuration.station.origin)
+            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: configuration.station.origin, departure: "")
         }
 
         return Timeline(entries: entries, policy: .atEnd)
@@ -126,6 +133,7 @@ struct SimpleEntry: TimelineEntry {
     var closestDate: Date? = .now
     var secondClosestDate: Date? = .now
     let origin: String
+    let departure: String
 }
 
 struct custom_train_timetable_widgetEntryView : View {
@@ -214,8 +222,8 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     custom_train_timetable_widget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley, id: "bad", origin: "nowhere")
-    SimpleEntry(date: .now, configuration: .starEyes, id: "bad", origin: "nowhere")
+    SimpleEntry(date: .now, configuration: .smiley, id: "bad", origin: "nowhere", departure: "nowhere")
+    SimpleEntry(date: .now, configuration: .starEyes, id: "bad", origin: "nowhere", departure: "nowhere")
 }
 
 
