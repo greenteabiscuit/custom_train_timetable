@@ -10,6 +10,10 @@ import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
     static var weekdaySchedule: [TimePoint] = [
+        TimePoint(hour: 09, min: 08, origin: "赤羽", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 09, min: 38, origin: "赤羽", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 09, min: 49, origin: "赤羽", dest: "蒲田", departure: "東十条"),
+        TimePoint(hour: 10, min: 01, origin: "赤羽", dest: "蒲田", departure: "東十条"),
         TimePoint(hour: 10, min: 31, origin: "赤羽", dest: "蒲田", departure: "東十条"),
         TimePoint(hour: 10, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条"),
         TimePoint(hour: 10, min: 56, origin: "南浦和", dest: "蒲田", departure: "東十条"),
@@ -60,8 +64,8 @@ struct Provider: AppIntentTimelineProvider {
         let entries = (0 ..< 60).map {
             let date = Calendar.current.date(byAdding: .second, value: $0 * 60 - 1, to: startDate)!
             let otherDate = Calendar.current.date(byAdding: .second, value: $0 * 60, to: startDate)!
-            let (first, second) = getNextSchedule(now: otherDate)
-            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: configuration.station.origin, departure: "")
+            let (first, second, origin) = getNextSchedule(now: otherDate)
+            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: origin ?? "", departure: configuration.station.origin)
         }
 
         return Timeline(entries: entries, policy: .atEnd)
@@ -85,7 +89,7 @@ struct Provider: AppIntentTimelineProvider {
     // 8. return the time in the array and the time in the array after that
     // if the time in the array is the last one, return nil for the second return value
     // 9. If there is none, return nil
-    func getNextSchedule(now: Date) -> (Date?, Date?) {
+    func getNextSchedule(now: Date) -> (Date?, Date?, String?) {
         let calendar = Calendar.current
         
         // Get the current hour and minute
@@ -103,9 +107,9 @@ struct Provider: AppIntentTimelineProvider {
                 for (index, condition) in weekendSchedule.enumerated() {
                     if (hour < condition.hour) || (hour == condition.hour && minute < condition.min) {
                         if (index + 1 == weekendSchedule.count) {
-                            return (condition.date, nil)
+                            return (condition.date, nil, condition.origin)
                         }
-                        return (condition.date, weekendSchedule[index + 1].date)
+                        return (condition.date, weekendSchedule[index + 1].date, condition.origin)
                     }
                 }
             } else {
@@ -115,14 +119,14 @@ struct Provider: AppIntentTimelineProvider {
                 for (index, condition) in weekdaySchedule.enumerated() {
                     if (hour < condition.hour) || (hour == condition.hour && minute < condition.min) {
                         if (index + 1 == weekdaySchedule.count) {
-                            return (condition.date, nil)
+                            return (condition.date, nil, condition.origin)
                         }
-                        return (condition.date, weekdaySchedule[index + 1].date)
+                        return (condition.date, weekdaySchedule[index + 1].date, condition.origin)
                     }
                 }
             }
         }
-        return (nil, nil)
+        return (nil, nil, nil)
     }
 }
 
