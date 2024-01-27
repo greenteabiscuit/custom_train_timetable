@@ -28,11 +28,6 @@ struct Provider: AppIntentTimelineProvider {
         TimePoint(hour: 06, min: 31, origin: "赤羽", dest: "武蔵小杉", departure: "東十条", dayType: .weekend),
         TimePoint(hour: 15, min: 23, origin: "東十条", dest: "磯子", departure: "東十条", dayType: .weekend),
     ]
-
-    enum DayType {
-        case weekday
-        case weekend
-    }
     
     // Define the class with two Int fields: hour and min
     class TimePoint {
@@ -56,11 +51,11 @@ struct Provider: AppIntentTimelineProvider {
         }
     }
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "bad", origin: "nowhere", departure: "nowhere")
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration, id: "bad", origin: "nowhere", departure: "nowhere")
+        SimpleEntry(date: Date(), configuration: configuration, id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
@@ -70,8 +65,8 @@ struct Provider: AppIntentTimelineProvider {
         let entries = (0 ..< 60).map {
             let date = Calendar.current.date(byAdding: .second, value: $0 * 60 - 1, to: startDate)!
             let otherDate = Calendar.current.date(byAdding: .second, value: $0 * 60, to: startDate)!
-            let (first, second, origin) = getNextSchedule(now: otherDate)
-            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: origin ?? "", departure: configuration.station.origin)
+            let (first, second, origin, dayType) = getNextSchedule(now: otherDate)
+            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: origin ?? "", departure: configuration.station.origin, dayType: dayType)
         }
 
         return Timeline(entries: entries, policy: .atEnd)
@@ -95,7 +90,7 @@ struct Provider: AppIntentTimelineProvider {
     // 8. return the time in the array and the time in the array after that
     // if the time in the array is the last one, return nil for the second return value
     // 9. If there is none, return nil
-    func getNextSchedule(now: Date) -> (Date?, Date?, String?) {
+    func getNextSchedule(now: Date) -> (Date?, Date?, String?, DayType) {
         let calendar = Calendar.current
         
         // Get the current hour and minute
@@ -113,9 +108,9 @@ struct Provider: AppIntentTimelineProvider {
                 for (index, condition) in weekendSchedule.enumerated() {
                     if (hour < condition.hour) || (hour == condition.hour && minute < condition.min) {
                         if (index + 1 == weekendSchedule.count) {
-                            return (condition.date, nil, condition.origin)
+                            return (condition.date, nil, condition.origin, .weekend)
                         }
-                        return (condition.date, weekendSchedule[index + 1].date, condition.origin)
+                        return (condition.date, weekendSchedule[index + 1].date, condition.origin, .weekend)
                     }
                 }
             } else {
@@ -125,15 +120,20 @@ struct Provider: AppIntentTimelineProvider {
                 for (index, condition) in weekdaySchedule.enumerated() {
                     if (hour < condition.hour) || (hour == condition.hour && minute < condition.min) {
                         if (index + 1 == weekdaySchedule.count) {
-                            return (condition.date, nil, condition.origin)
+                            return (condition.date, nil, condition.origin, .weekday)
                         }
-                        return (condition.date, weekdaySchedule[index + 1].date, condition.origin)
+                        return (condition.date, weekdaySchedule[index + 1].date, condition.origin, .weekday)
                     }
                 }
             }
         }
-        return (nil, nil, nil)
+        return (nil, nil, nil, .weekday)
     }
+}
+
+enum DayType {
+    case weekday
+    case weekend
 }
 
 struct SimpleEntry: TimelineEntry {
@@ -144,6 +144,7 @@ struct SimpleEntry: TimelineEntry {
     var secondClosestDate: Date? = .now
     let origin: String
     let departure: String
+    let dayType: DayType
 }
 
 struct custom_train_timetable_widgetEntryView : View {
@@ -184,8 +185,11 @@ struct custom_train_timetable_widgetEntryView : View {
                     .fill(Color.green)
                     .frame(width: 10, height: 10)
             }
-            Text("\(entry.id)\n\(entry.origin)発")
-                .font(.system(size: 15))
+            if entry.dayType == .weekday {
+                Text("平日ダイヤ\n\(entry.id)\n\(entry.origin)発").font(.system(size: 15))
+            } else {
+                Text("休日ダイヤ\n\(entry.id)\n\(entry.origin)発").font(.system(size: 15))
+            }
             if entry.closestDate != nil {
                 Text("\(entry.closestDate!, formatter: Self.dateFormatter)")
             } else {
@@ -232,8 +236,8 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     custom_train_timetable_widget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley, id: "bad", origin: "nowhere", departure: "nowhere")
-    SimpleEntry(date: .now, configuration: .starEyes, id: "bad", origin: "nowhere", departure: "nowhere")
+    SimpleEntry(date: .now, configuration: .smiley, id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
+    SimpleEntry(date: .now, configuration: .starEyes, id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
 }
 
 
