@@ -173,11 +173,11 @@ struct Provider: AppIntentTimelineProvider {
         }
     }
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "王子神谷", origin: "王子神谷", departure: "王子神谷", dayType: .weekend)
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration, id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
+        SimpleEntry(date: Date(), configuration: configuration, id: "東十条", origin: "東十条", departure: "東十条", dayType: .weekend)
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
@@ -358,8 +358,8 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     custom_train_timetable_widget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley, id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
-    SimpleEntry(date: .now, configuration: .starEyes, id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
+    SimpleEntry(date: .now, configuration: .smiley, id: "東十条", origin: "赤羽", departure: "東十条", dayType: .weekday)
+    SimpleEntry(date: .now, configuration: .starEyes, id: "王子神谷", origin: "赤羽岩淵", departure: "王子神谷", dayType: .weekday)
 }
 
 
