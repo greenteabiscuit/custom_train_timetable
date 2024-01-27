@@ -73,6 +73,82 @@ struct Provider: AppIntentTimelineProvider {
         TimePoint(hour: 22, min: 39, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
         TimePoint(hour: 23, min: 20, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekday),
         TimePoint(hour: 23, min: 58, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        
+        // 王子神谷休日
+        TimePoint(hour: 7, min: 31, origin: "王子神谷", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 7, min: 47, origin: "王子神谷", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 9, min: 17, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 9, min: 30, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 9, min: 48, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 10, min: 00, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 10, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 10, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 10, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 10, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 11, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 11, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 11, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 11, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 11, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 12, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 12, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 12, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 12, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 12, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 13, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 13, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 13, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 13, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 13, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 14, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 14, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 14, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 14, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 14, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 15, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 15, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 15, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 15, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 15, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 16, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 16, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 16, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 16, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 16, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 17, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 17, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 17, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 17, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 17, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 18, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 18, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 18, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 18, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 18, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 19, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 19, min: 29, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 19, min: 59, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 20, min: 06, origin: "赤羽岩淵", dest: "武蔵小杉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 20, min: 30, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 20, min: 59, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 21, min: 59, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 22, min: 28, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 23, min: 08, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 23, min: 31, origin: "赤羽岩淵", dest: "武蔵小杉", departure: "王子神谷", dayType: .weekend),
     ]
     
     // Define the class with two Int fields: hour and min
