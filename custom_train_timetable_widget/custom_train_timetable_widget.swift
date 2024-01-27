@@ -27,6 +27,9 @@ struct Provider: AppIntentTimelineProvider {
         TimePoint(hour: 23, min: 23, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
         
         // 東十条休日
+        TimePoint(hour: 04, min: 32, origin: "東十条", dest: "大船", departure: "東十条", dayType: .weekend),
+        TimePoint(hour: 05, min: 34, origin: "東十条", dest: "大船", departure: "東十条", dayType: .weekend),
+        TimePoint(hour: 07, min: 20, origin: "東十条", dest: "大船", departure: "東十条", dayType: .weekend),
         TimePoint(hour: 06, min: 31, origin: "赤羽", dest: "武蔵小杉", departure: "東十条", dayType: .weekend),
         TimePoint(hour: 15, min: 23, origin: "東十条", dest: "磯子", departure: "東十条", dayType: .weekend),
         
