@@ -9,26 +9,30 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
-    static var weekdaySchedule: [TimePoint] = [
-        TimePoint(hour: 09, min: 08, origin: "赤羽", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 09, min: 38, origin: "赤羽", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 09, min: 49, origin: "赤羽", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 10, min: 01, origin: "赤羽", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 10, min: 31, origin: "赤羽", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 10, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 10, min: 56, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 11, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 11, min: 31, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 11, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 11, min: 51, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 12, min: 01, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 12, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 23, min: 23, origin: "南浦和", dest: "蒲田", departure: "東十条"),
+    static var trainSchedule: [TimePoint] = [
+        TimePoint(hour: 09, min: 08, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 09, min: 38, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 09, min: 49, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 10, min: 01, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 10, min: 31, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 10, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 10, min: 56, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 11, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 11, min: 31, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 11, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 11, min: 51, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 12, min: 01, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 12, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 23, min: 23, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        
+        TimePoint(hour: 06, min: 31, origin: "赤羽", dest: "武蔵小杉", departure: "東十条", dayType: .weekend),
+        TimePoint(hour: 15, min: 23, origin: "東十条", dest: "磯子", departure: "東十条", dayType: .weekend),
     ]
 
-    static var weekendSchedule: [TimePoint] = [
-        TimePoint(hour: 23, min: 31, origin: "東十条", dest: "武蔵小杉", departure: "東十条"),
-    ]
+    enum DayType {
+        case weekday
+        case weekend
+    }
     
     // Define the class with two Int fields: hour and min
     class TimePoint {
@@ -38,8 +42,9 @@ struct Provider: AppIntentTimelineProvider {
         var origin: String
         var departure: String
         var dest: String
+        var dayType: DayType
         
-        init(hour: Int, min: Int, origin: String, dest: String, departure: String) {
+        init(hour: Int, min: Int, origin: String, dest: String, departure: String, dayType: DayType) {
             let today = Calendar.current.startOfDay(for: Date())
             self.hour = hour
             self.min = min
@@ -47,6 +52,7 @@ struct Provider: AppIntentTimelineProvider {
             self.dest = dest
             self.origin = origin
             self.departure = departure
+            self.dayType = dayType
         }
     }
     func placeholder(in context: Context) -> SimpleEntry {
@@ -103,7 +109,7 @@ struct Provider: AppIntentTimelineProvider {
             // Sunday = 1, Saturday = 7, Weekdays = 2-6
             if weekday == 1 || weekday == 7 {
                 // for weekend!
-                let weekendSchedule = Provider.weekendSchedule
+                let weekendSchedule = Provider.trainSchedule.filter { $0.dayType == .weekend }
                 for (index, condition) in weekendSchedule.enumerated() {
                     if (hour < condition.hour) || (hour == condition.hour && minute < condition.min) {
                         if (index + 1 == weekendSchedule.count) {
@@ -114,7 +120,7 @@ struct Provider: AppIntentTimelineProvider {
                 }
             } else {
                 // for weekday
-                let weekdaySchedule = Provider.weekdaySchedule
+                let weekdaySchedule = Provider.trainSchedule.filter({$0.dayType == .weekday})
                 
                 for (index, condition) in weekdaySchedule.enumerated() {
                     if (hour < condition.hour) || (hour == condition.hour && minute < condition.min) {
