@@ -308,9 +308,9 @@ struct custom_train_timetable_widgetEntryView : View {
                     .frame(width: 10, height: 10)
             }
             if entry.dayType == .weekday {
-                Text("平日ダイヤ\n\(entry.id)\n\(entry.origin)発").font(.system(size: 15))
+                Text("平日\n\(entry.id)\n\(entry.origin)発").font(.system(size: 14))
             } else {
-                Text("休日ダイヤ\n\(entry.id)\n\(entry.origin)発").font(.system(size: 15))
+                Text("休日\n\(entry.id)\n\(entry.origin)発").font(.system(size: 14))
             }
             if entry.closestDate != nil {
                 Text("\(entry.closestDate!, formatter: Self.dateFormatter)")
