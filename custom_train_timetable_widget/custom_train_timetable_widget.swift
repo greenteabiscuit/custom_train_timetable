@@ -9,25 +9,146 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
-    static var weekdaySchedule: [TimePoint] = [
-        TimePoint(hour: 09, min: 08, origin: "赤羽", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 09, min: 38, origin: "赤羽", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 09, min: 49, origin: "赤羽", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 10, min: 01, origin: "赤羽", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 10, min: 31, origin: "赤羽", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 10, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 10, min: 56, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 11, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 11, min: 31, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 11, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 11, min: 51, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 12, min: 01, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 12, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-        TimePoint(hour: 23, min: 23, origin: "南浦和", dest: "蒲田", departure: "東十条"),
-    ]
+    static var trainSchedule: [TimePoint] = [
+        // 東十条平日
+        TimePoint(hour: 09, min: 08, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 09, min: 38, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 09, min: 49, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 10, min: 01, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 10, min: 31, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 10, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 10, min: 56, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 11, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 11, min: 31, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 11, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 11, min: 51, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 12, min: 01, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 12, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 23, min: 23, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        
+        // 東十条休日
+        TimePoint(hour: 06, min: 31, origin: "赤羽", dest: "武蔵小杉", departure: "東十条", dayType: .weekend),
+        TimePoint(hour: 15, min: 23, origin: "東十条", dest: "磯子", departure: "東十条", dayType: .weekend),
+        
+        // 王子神谷平日
+        TimePoint(hour: 10, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+        // Add some TimePoint instances to the array
+        TimePoint(hour: 11, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 11, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 11, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 11, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 11, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
 
-    static var weekendSchedule: [TimePoint] = [
-        TimePoint(hour: 23, min: 31, origin: "東十条", dest: "武蔵小杉", departure: "東十条"),
+        TimePoint(hour: 12, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 12, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 12, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 12, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 12, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+
+        TimePoint(hour: 13, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 13, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 13, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 13, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 13, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+        
+        TimePoint(hour: 14, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 14, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 14, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 14, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 14, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+
+        TimePoint(hour: 15, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 15, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 15, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 15, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 15, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+
+        TimePoint(hour: 16, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 16, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 16, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 16, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekday),
+
+        TimePoint(hour: 17, min: 0, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+        
+        TimePoint(hour: 22, min: 39, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 23, min: 20, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekday),
+        TimePoint(hour: 23, min: 58, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekday),
+        
+        // 王子神谷休日
+        TimePoint(hour: 7, min: 31, origin: "王子神谷", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 7, min: 47, origin: "王子神谷", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 9, min: 17, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 9, min: 30, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 9, min: 48, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 10, min: 00, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 10, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 10, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 10, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 10, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 11, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 11, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 11, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 11, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 11, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 12, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 12, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 12, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 12, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 12, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 13, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 13, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 13, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 13, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 13, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 14, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 14, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 14, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 14, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 14, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 15, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 15, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 15, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 15, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 15, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 16, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 16, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 16, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 16, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 16, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 17, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 17, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 17, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 17, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 17, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 18, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 18, min: 14, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 18, min: 26, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 18, min: 38, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 18, min: 50, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 19, min: 02, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 19, min: 29, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 19, min: 59, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+
+        TimePoint(hour: 20, min: 06, origin: "赤羽岩淵", dest: "武蔵小杉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 20, min: 30, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 20, min: 59, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 21, min: 59, origin: "赤羽岩淵", dest: "横浜", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 22, min: 28, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 23, min: 08, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
+        TimePoint(hour: 23, min: 31, origin: "赤羽岩淵", dest: "武蔵小杉", departure: "王子神谷", dayType: .weekend),
     ]
     
     // Define the class with two Int fields: hour and min
@@ -38,8 +159,9 @@ struct Provider: AppIntentTimelineProvider {
         var origin: String
         var departure: String
         var dest: String
+        var dayType: DayType
         
-        init(hour: Int, min: Int, origin: String, dest: String, departure: String) {
+        init(hour: Int, min: Int, origin: String, dest: String, departure: String, dayType: DayType) {
             let today = Calendar.current.startOfDay(for: Date())
             self.hour = hour
             self.min = min
@@ -47,14 +169,15 @@ struct Provider: AppIntentTimelineProvider {
             self.dest = dest
             self.origin = origin
             self.departure = departure
+            self.dayType = dayType
         }
     }
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "bad", origin: "nowhere", departure: "nowhere")
+        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent(), id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration, id: "bad", origin: "nowhere", departure: "nowhere")
+        SimpleEntry(date: Date(), configuration: configuration, id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
@@ -64,8 +187,8 @@ struct Provider: AppIntentTimelineProvider {
         let entries = (0 ..< 60).map {
             let date = Calendar.current.date(byAdding: .second, value: $0 * 60 - 1, to: startDate)!
             let otherDate = Calendar.current.date(byAdding: .second, value: $0 * 60, to: startDate)!
-            let (first, second, origin) = getNextSchedule(now: otherDate)
-            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: origin ?? "", departure: configuration.station.origin)
+            let (first, second, origin, dayType) = getNextSchedule(now: otherDate, stationName: configuration.station.id)
+            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: origin ?? "", departure: configuration.station.origin, dayType: dayType)
         }
 
         return Timeline(entries: entries, policy: .atEnd)
@@ -89,7 +212,7 @@ struct Provider: AppIntentTimelineProvider {
     // 8. return the time in the array and the time in the array after that
     // if the time in the array is the last one, return nil for the second return value
     // 9. If there is none, return nil
-    func getNextSchedule(now: Date) -> (Date?, Date?, String?) {
+    func getNextSchedule(now: Date, stationName: String) -> (Date?, Date?, String?, DayType) {
         let calendar = Calendar.current
         
         // Get the current hour and minute
@@ -103,31 +226,36 @@ struct Provider: AppIntentTimelineProvider {
             // Sunday = 1, Saturday = 7, Weekdays = 2-6
             if weekday == 1 || weekday == 7 {
                 // for weekend!
-                let weekendSchedule = Provider.weekendSchedule
+                let weekendSchedule = Provider.trainSchedule.filter { $0.dayType == .weekend && $0.departure == stationName }
                 for (index, condition) in weekendSchedule.enumerated() {
                     if (hour < condition.hour) || (hour == condition.hour && minute < condition.min) {
                         if (index + 1 == weekendSchedule.count) {
-                            return (condition.date, nil, condition.origin)
+                            return (condition.date, nil, condition.origin, .weekend)
                         }
-                        return (condition.date, weekendSchedule[index + 1].date, condition.origin)
+                        return (condition.date, weekendSchedule[index + 1].date, condition.origin, .weekend)
                     }
                 }
             } else {
                 // for weekday
-                let weekdaySchedule = Provider.weekdaySchedule
+                let weekdaySchedule = Provider.trainSchedule.filter({$0.dayType == .weekday && $0.departure == stationName})
                 
                 for (index, condition) in weekdaySchedule.enumerated() {
                     if (hour < condition.hour) || (hour == condition.hour && minute < condition.min) {
                         if (index + 1 == weekdaySchedule.count) {
-                            return (condition.date, nil, condition.origin)
+                            return (condition.date, nil, condition.origin, .weekday)
                         }
-                        return (condition.date, weekdaySchedule[index + 1].date, condition.origin)
+                        return (condition.date, weekdaySchedule[index + 1].date, condition.origin, .weekday)
                     }
                 }
             }
         }
-        return (nil, nil, nil)
+        return (nil, nil, nil, .weekday)
     }
+}
+
+enum DayType {
+    case weekday
+    case weekend
 }
 
 struct SimpleEntry: TimelineEntry {
@@ -138,6 +266,7 @@ struct SimpleEntry: TimelineEntry {
     var secondClosestDate: Date? = .now
     let origin: String
     let departure: String
+    let dayType: DayType
 }
 
 struct custom_train_timetable_widgetEntryView : View {
@@ -178,8 +307,11 @@ struct custom_train_timetable_widgetEntryView : View {
                     .fill(Color.green)
                     .frame(width: 10, height: 10)
             }
-            Text("\(entry.id)\n\(entry.origin)発")
-                .font(.system(size: 15))
+            if entry.dayType == .weekday {
+                Text("平日\n\(entry.id)\n\(entry.origin)発").font(.system(size: 14))
+            } else {
+                Text("休日\n\(entry.id)\n\(entry.origin)発").font(.system(size: 14))
+            }
             if entry.closestDate != nil {
                 Text("\(entry.closestDate!, formatter: Self.dateFormatter)")
             } else {
@@ -226,8 +358,8 @@ extension ConfigurationAppIntent {
 #Preview(as: .systemSmall) {
     custom_train_timetable_widget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley, id: "bad", origin: "nowhere", departure: "nowhere")
-    SimpleEntry(date: .now, configuration: .starEyes, id: "bad", origin: "nowhere", departure: "nowhere")
+    SimpleEntry(date: .now, configuration: .smiley, id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
+    SimpleEntry(date: .now, configuration: .starEyes, id: "bad", origin: "nowhere", departure: "nowhere", dayType: .weekday)
 }
 
 
