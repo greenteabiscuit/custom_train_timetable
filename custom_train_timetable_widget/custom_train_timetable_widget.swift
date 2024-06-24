@@ -11,20 +11,15 @@ import SwiftUI
 struct Provider: AppIntentTimelineProvider {
     static var trainSchedule: [TimePoint] = [
         // 東十条平日
+        TimePoint(hour: 04, min: 32, origin: "東十条", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 05, min: 34, origin: "東十条", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 06, min: 56, origin: "東十条", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 08, min: 46, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
         TimePoint(hour: 09, min: 08, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
-        TimePoint(hour: 09, min: 38, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
+        TimePoint(hour: 09, min: 31, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
         TimePoint(hour: 09, min: 49, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
         TimePoint(hour: 10, min: 01, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
         TimePoint(hour: 10, min: 31, origin: "赤羽", dest: "蒲田", departure: "東十条", dayType: .weekday),
-        TimePoint(hour: 10, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
-        TimePoint(hour: 10, min: 56, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
-        TimePoint(hour: 11, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
-        TimePoint(hour: 11, min: 31, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
-        TimePoint(hour: 11, min: 41, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
-        TimePoint(hour: 11, min: 51, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
-        TimePoint(hour: 12, min: 01, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
-        TimePoint(hour: 12, min: 11, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
-        TimePoint(hour: 23, min: 23, origin: "南浦和", dest: "蒲田", departure: "東十条", dayType: .weekday),
         
         // 東十条休日
         TimePoint(hour: 04, min: 32, origin: "東十条", dest: "大船", departure: "東十条", dayType: .weekend),
