@@ -147,6 +147,177 @@ struct Provider: AppIntentTimelineProvider {
         TimePoint(hour: 22, min: 28, origin: "赤羽岩淵", dest: "日吉", departure: "王子神谷", dayType: .weekend),
         TimePoint(hour: 23, min: 08, origin: "赤羽岩淵", dest: "白金高輪", departure: "王子神谷", dayType: .weekend),
         TimePoint(hour: 23, min: 31, origin: "赤羽岩淵", dest: "武蔵小杉", departure: "王子神谷", dayType: .weekend),
+        
+        TimePoint(hour: 5, min: 0, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 5, min: 12, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 5, min: 26, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 5, min: 36, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 5, min: 46, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 5, min: 57, origin: "代々木上原", dest: "Kashiwa", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 6, min: 5, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 6, min: 12, origin: "代々木上原", dest: "Kashiwa", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 6, min: 17, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 6, min: 27, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 6, min: 35, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 6, min: 38, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 6, min: 42, origin: "代々木上原", dest: "Kashiwa", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 6, min: 50, origin: "代々木上原", dest: "Matsudo", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 6, min: 55, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 7, min: 5, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 7, min: 14, origin: "代々木上原", dest: "Matsudo", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 7, min: 21, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 7, min: 32, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 7, min: 41, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 7, min: 53, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 2, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 12, origin: "代々木上原", dest: "Matsudo", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 16, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 22, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 27, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 33, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 38, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 43, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 48, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 54, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 8, min: 56, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 6, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 8, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 14, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 19, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 22, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 28, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 31, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 34, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 40, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 43, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 49, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 9, min: 56, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 10, min: 4, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 10, min: 8, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 10, min: 15, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 10, min: 29, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 10, min: 34, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 10, min: 49, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 10, min: 54, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 11, min: 4, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 11, min: 9, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 11, min: 14, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 11, min: 24, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 11, min: 29, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 11, min: 34, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 11, min: 44, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 11, min: 49, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 11, min: 54, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 12, min: 4, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 12, min: 9, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 12, min: 14, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 12, min: 24, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 12, min: 29, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 12, min: 34, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 12, min: 44, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 12, min: 49, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 12, min: 54, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 13, min: 4, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 13, min: 9, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 13, min: 14, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 13, min: 24, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 13, min: 29, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 13, min: 34, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 13, min: 44, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 13, min: 49, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 13, min: 54, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 14, min: 4, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 14, min: 9, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 14, min: 14, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 14, min: 24, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 14, min: 29, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 14, min: 34, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 14, min: 44, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 14, min: 49, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 14, min: 54, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 15, min: 4, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 15, min: 9, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 15, min: 14, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 15, min: 24, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 15, min: 29, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 15, min: 34, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 15, min: 44, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 15, min: 49, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 15, min: 54, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 4, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 8, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 14, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 18, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 25, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 28, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 32, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 36, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 39, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 46, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 51, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 54, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 16, min: 59, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 8, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 12, origin: "代々木上原", dest: "Kashiwa", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 22, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 25, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 33, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 37, origin: "代々木上原", dest: "Kashiwa", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 44, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 47, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 53, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 56, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 17, min: 59, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 18, min: 7, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 18, min: 16, origin: "代々木上原", dest: "Kashiwa", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 18, min: 23, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 18, min: 26, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 18, min: 33, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 18, min: 36, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 18, min: 39, origin: "代々木上原", dest: "Kashiwa", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 18, min: 46, origin: "代々木上原", dest: "Toride", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 18, min: 55, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 19, min: 4, origin: "代々木上原", dest: "Kashiwa", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 19, min: 8, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 19, min: 17, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 19, min: 26, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 19, min: 35, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 19, min: 45, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 19, min: 51, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 19, min: 55, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 20, min: 5, origin: "代々木上原", dest: "Kashiwa", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 20, min: 16, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 20, min: 25, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 20, min: 29, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 20, min: 38, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 20, min: 46, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 20, min: 57, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 21, min: 7, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 21, min: 16, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 21, min: 26, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 21, min: 35, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 21, min: 40, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 21, min: 50, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 22, min: 1, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 22, min: 7, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 22, min: 12, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 22, min: 18, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 22, min: 23, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 22, min: 29, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 22, min: 35, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 22, min: 46, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 22, min: 52, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 22, min: 58, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 23, min: 4, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 23, min: 10, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 23, min: 16, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 23, min: 22, origin: "代々木上原", dest: "KitaAyase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 23, min: 28, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 23, min: 38, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 23, min: 45, origin: "代々木上原", dest: "Abiko", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 23, min: 52, origin: "代々木上原", dest: "Ayase", departure: "代々木上原", dayType: .weekday),
+        TimePoint(hour: 0, min: 0, origin: "代々木上原", dest: "Matsudo", departure: "代々木上原", dayType: .weekday),
+
     ]
     
     // Define the class with two Int fields: hour and min
@@ -284,7 +455,7 @@ struct custom_train_timetable_widgetEntryView : View {
                     Text("\(entry.secondClosestDate!, formatter: Self.dateFormatter)")
                     .foregroundColor(.gray)
                 } else {
-                    Text("本日は終了しました")
+                    Text("なし")
                     .foregroundColor(.gray)
                 }
                     
@@ -313,7 +484,7 @@ struct custom_train_timetable_widgetEntryView : View {
             if entry.closestDate != nil {
                 Text("\(entry.closestDate!, formatter: Self.dateFormatter)")
             } else {
-                Text("本日は終了しました")
+                Text("なし")
             }
         }
         if entry.closestDate != nil {
@@ -351,6 +522,11 @@ extension ConfigurationAppIntent {
         let intent = ConfigurationAppIntent(station: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, origin: "something"))
         return intent
     }
+    
+    fileprivate static var yoyogiUehara: ConfigurationAppIntent {
+        let intent = ConfigurationAppIntent(station: StationName(id: "default", avatar: "🐼", healthLevel: 0.77, origin: "something"))
+        return intent
+    }
 }
 
 #Preview(as: .systemSmall) {
@@ -358,6 +534,7 @@ extension ConfigurationAppIntent {
 } timeline: {
     SimpleEntry(date: .now, configuration: .smiley, id: "東十条", origin: "赤羽", departure: "東十条", dayType: .weekday)
     SimpleEntry(date: .now, configuration: .starEyes, id: "王子神谷", origin: "赤羽岩淵", departure: "王子神谷", dayType: .weekday)
+    SimpleEntry(date: .now, configuration: .yoyogiUehara, id: "代々木上原", origin: "代々木上原", departure: "代々木上原", dayType: .weekday)
 }
 
 
