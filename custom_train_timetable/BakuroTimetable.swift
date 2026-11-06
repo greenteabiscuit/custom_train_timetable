@@ -5,14 +5,27 @@ enum BakuroRoute: String, CaseIterable, Identifiable {
     case bakurocho = "馬喰町"
     case bakuroyokoyama = "馬喰横山"
     case ichigaya = "市ヶ谷"
+    case mitaToHigashinihombashi = "三田 → 東日本橋"
+    case higashinihombashiToMita = "東日本橋 → 三田"
 
     var id: String { rawValue }
-    var summary: String { self == .bakurocho ? "東京止まり" : (self == .ichigaya ? "本八幡方面・急行" : "新宿止まり・急行") }
-    var line: String { self == .bakurocho ? "総武快速線" : "都営新宿線" }
-    var code: String { self == .bakurocho ? "JO" : "S" }
+    var isAirport: Bool { self == .mitaToHigashinihombashi || self == .higashinihombashiToMita }
+    var summary: String { isAirport ? "エアポート快特" : self == .bakurocho ? "東京止まり" : (self == .ichigaya ? "本八幡方面・急行" : "新宿止まり・急行") }
+    var line: String { isAirport ? "都営浅草線" : self == .bakurocho ? "総武快速線" : "都営新宿線" }
+    var code: String { isAirport ? "A" : self == .bakurocho ? "JO" : "S" }
+    var path: String {
+        switch self {
+        case .bakurocho: return "bakurocho"
+        case .bakuroyokoyama: return "bakuroyokoyama"
+        case .ichigaya: return "ichigaya"
+        case .mitaToHigashinihombashi: return "mita-higashinihombashi"
+        case .higashinihombashiToMita: return "higashinihombashi-mita"
+        }
+    }
     // Passenger-information line colors: JR Yokosuka/Sobu Rapid and Toei Shinjuku.
     var color: Color {
-        self == .bakurocho
+        if isAirport { return Color(red: 0xE8 / 255.0, green: 0x52 / 255.0, blue: 0x98 / 255.0) }
+        return self == .bakurocho
             ? Color(red: 0x00 / 255.0, green: 0x7A / 255.0, blue: 0xC0 / 255.0)
             : Color(red: 0xB0 / 255.0, green: 0xBF / 255.0, blue: 0x1E / 255.0)
     }
@@ -33,7 +46,7 @@ struct BakuroTrain: Hashable, Identifiable {
     var express = false
     var note = ""
     var id: String { "\(route.rawValue)-\(day.rawValue)-\(minute)-\(destination)-\(express)" }
-    var label: String { express ? "急行 \(destination)行き" : "\(destination)止まり" }
+    var label: String { route.isAirport ? "エアポート快特 \(destination)行き" : express ? "急行 \(destination)行き" : "\(destination)止まり" }
     var time: String { String(format: "%02d:%02d", minute / 60 % 24, minute % 60) }
     var serviceTime: String { (minute >= 1440 ? "翌 " : "") + time }
 }
@@ -104,6 +117,10 @@ enum BakuroTimetable {
     }
 
     static func sourceURL(for route: BakuroRoute, day: BakuroDay) -> URL {
+        if route.isAirport {
+            let station = route == .mitaToHigashinihombashi ? "A08N" : "A15S"
+            return URL(string: "https://www.kotsu.metro.tokyo.jp/subway/timetable/asakusa/\(station)\(day == .weekday ? "D" : "H").html")!
+        }
         if route == .bakurocho {
             return URL(string: "https://timetables.jreast.co.jp/2611/timetable/tt1220/122002\(day == .weekday ? 0 : 1).html")!
         }
@@ -115,6 +132,61 @@ enum BakuroTimetable {
 
     // BEGIN VERIFIED DATA — official timetables checked 2026-11-02.
     static let normal: [BakuroTrain] = [
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 608, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 645, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 684, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 726, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 764, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 806, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 844, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 886, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 924, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 1246, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 1279, destination: "京成成田"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 1306, destination: "京成成田"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 1327, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .weekday, minute: 1362, destination: "宗吾参道"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 605, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 645, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 685, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 726, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 764, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 806, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 844, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 886, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 924, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 966, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 1004, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 1046, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 1086, destination: "成田空港"),
+        BakuroTrain(route: .mitaToHigashinihombashi, day: .holiday, minute: 1126, destination: "成田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 390, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 576, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 626, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 666, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 706, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 746, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 786, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 826, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 866, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 906, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .weekday, minute: 945, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 392, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 585, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 626, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 665, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 706, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 746, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 786, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 826, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 866, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 906, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 946, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 986, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 1025, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 1066, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 1105, destination: "羽田空港"),
+        BakuroTrain(route: .higashinihombashiToMita, day: .holiday, minute: 1146, destination: "羽田空港"),
         BakuroTrain(route: .ichigaya, day: .weekday, minute: 1064, destination: "本八幡", express: true),
         BakuroTrain(route: .ichigaya, day: .weekday, minute: 1090, destination: "本八幡", express: true),
         BakuroTrain(route: .ichigaya, day: .weekday, minute: 1130, destination: "本八幡", express: true),
@@ -472,7 +544,7 @@ struct BakuroWidgetContent: View {
                     .monospacedDigit().fixedSize()
                 // A shared destination is already shown beside the first departure.
                 if primary || departure.train.destination != departures.first?.train.destination {
-                    Text(primary && !departure.train.express
+                    Text(primary && !departure.train.express && !route.isAirport
                          ? "\(departure.train.destination)止まり" : "\(departure.train.destination)行")
                         .font(.system(size: 12, weight: .semibold))
                         .lineLimit(1).truncationMode(.tail)
@@ -480,7 +552,7 @@ struct BakuroWidgetContent: View {
             }
             .foregroundStyle(primary ? .primary : .secondary)
             HStack(spacing: 4) {
-                badge(departure.train.express ? "急行" : route == .bakurocho ? "快速" : "各停",
+                badge(route.isAirport ? "エアポート快特" : departure.train.express ? "急行" : route == .bakurocho ? "快速" : "各停",
                       color: departure.train.express ? Color(red: 0.48, green: 0.48, blue: 1) : .primary)
                 badge(departure.train.day.rawValue, color: .secondary)
             }

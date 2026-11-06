@@ -610,7 +610,7 @@ struct custom_train_timetable_widgetEntryView : View {
         Group {
             if let route = BakuroRoute(rawValue: entry.id), let departures = entry.bakuroDepartures {
                 BakuroWidgetContent(route: route, departures: departures, compact: family == .systemSmall)
-                    .widgetURL(URL(string: "custom-timetable://station/\(route == .bakurocho ? "bakurocho" : (route == .ichigaya ? "ichigaya" : "bakuroyokoyama"))"))
+                    .widgetURL(URL(string: "custom-timetable://station/\(route.path)"))
                     .environment(\.colorScheme, .dark)
             } else {
                 legacyBody

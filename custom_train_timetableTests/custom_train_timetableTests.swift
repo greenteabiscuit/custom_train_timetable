@@ -74,4 +74,17 @@ final class custom_train_timetableTests: XCTestCase {
         XCTAssertEqual(later[1].date, date("2026-11-05 07:27:00"))
         XCTAssertTrue(BakuroTimetable.nextDepartures(for: .bakurocho, after: .now, count: 0).isEmpty)
     }
+    func testAirportExpressSchedulesAndNextDay() {
+        let monday = date("2026-11-02 12:00:00")
+        let sunday = date("2026-11-08 12:00:00")
+        let north = BakuroTimetable.schedule(for: .mitaToHigashinihombashi, on: monday)
+        let south = BakuroTimetable.schedule(for: .higashinihombashiToMita, on: sunday)
+        XCTAssertEqual(north.count, 14)
+        XCTAssertEqual(south.count, 16)
+        XCTAssertEqual(north.first?.time, "10:08")
+        XCTAssertEqual(north.last?.destination, "宗吾参道")
+        XCTAssertEqual(south.first?.time, "06:32")
+        XCTAssertTrue(north.allSatisfy { $0.label.contains("エアポート快特") })
+        XCTAssertEqual(BakuroTimetable.nextDepartures(for: .higashinihombashiToMita, after: date("2026-11-02 23:00:00")).first?.train.time, "06:32")
+    }
 }

@@ -53,6 +53,8 @@ struct StationName: AppEntity {
         StationName(id: "市ヶ谷", avatar: "S", healthLevel: 0, origin: "市ヶ谷"),
         StationName(id: "馬喰町", avatar: "JO", healthLevel: 0, origin: "馬喰町"),
         StationName(id: "馬喰横山", avatar: "S", healthLevel: 0, origin: "馬喰横山"),
+        StationName(id: "三田 → 東日本橋", avatar: "A", healthLevel: 0, origin: "三田"),
+        StationName(id: "東日本橋 → 三田", avatar: "A", healthLevel: 0, origin: "東日本橋"),
     ]
 }
 

@@ -21,9 +21,7 @@ struct ContentView: View {
             .navigationTitle("時刻表")
         }
         .onOpenURL { url in
-            if url.lastPathComponent == "ichigaya" { routeName = BakuroRoute.ichigaya.rawValue }
-            if url.lastPathComponent == "bakurocho" { routeName = BakuroRoute.bakurocho.rawValue }
-            if url.lastPathComponent == "bakuroyokoyama" { routeName = BakuroRoute.bakuroyokoyama.rawValue }
+            if let selected = BakuroRoute.allCases.first(where: { $0.path == url.lastPathComponent }) { routeName = selected.rawValue }
         }
         .task { WidgetCenter.shared.reloadAllTimelines() }
     }
@@ -36,7 +34,7 @@ struct ContentView: View {
                 Picker("駅", selection: $routeName) {
                     ForEach(BakuroRoute.allCases) { Text($0.rawValue).tag($0.rawValue) }
                 }
-                .pickerStyle(.segmented)
+                .pickerStyle(.menu)
                 .accessibilityIdentifier("station-picker")
                 Label("\(route.line) · \(route.summary)", systemImage: "tram.fill")
                     .font(.subheadline).foregroundStyle(.secondary)
@@ -71,7 +69,7 @@ struct ContentView: View {
                 Text("全時刻表 · \(rows.first?.day.rawValue ?? "") · \(rows.count)本")
             }
             Section {
-                Text("2026年11月2日確認。祝日情報は2027年まで。0時台は前日のダイヤです。")
+                Text("時刻表は2026年11月確認。祝日情報は2027年まで。0時台は前日のダイヤです。")
                     .font(.footnote).foregroundStyle(.secondary)
                 Link("公式時刻表", destination: BakuroTimetable.sourceURL(for: route,
                     day: rows.first?.day ?? .weekday))

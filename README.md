@@ -23,3 +23,11 @@ Sources: [JR East](https://timetables.jreast.co.jp/timetable/list1220.html),
 Validation: five scheduling unit tests and the new-station UI test passed on iOS 26.2.
 The widget entity query was also run to verify both new stations are suggested and
 resolve by ID while retaining the legacy station choices and default.
+
+Added on 2026-11-06: **三田 → 東日本橋** and **東日本橋 → 三田**,
+filtered to Asakusa Line エアポート快特 services in the app and widget.
+Weekday and weekend/holiday schedules are bundled from the Toei timetables:
+[三田 weekdays](https://www.kotsu.metro.tokyo.jp/subway/timetable/asakusa/A08ND.html),
+[三田 weekends](https://www.kotsu.metro.tokyo.jp/subway/timetable/asakusa/A08NH.html),
+[東日本橋 weekdays](https://www.kotsu.metro.tokyo.jp/subway/timetable/asakusa/A15SD.html),
+and [東日本橋 weekends](https://www.kotsu.metro.tokyo.jp/subway/timetable/asakusa/A15SH.html).
