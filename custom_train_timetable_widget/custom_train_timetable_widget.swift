@@ -469,49 +469,7 @@ struct Provider: AppIntentTimelineProvider {
         TimePoint(hour: 23, min: 55, origin: "代々木上原", dest: "松戸", departure: "代々木上原", dayType: .weekend),
 
 
-    ] + ichigayaSchedule
-
-    // Toei Shinjuku Line toward Bakuro-yokoyama. The 00:17 train ends at
-    // Iwamotocho, so it is excluded. Times: Tokyo Metropolitan Bureau of
-    // Transportation, revised March 17 (weekday) / March 15 (weekend), 2025.
-    // https://www.kotsu.metro.tokyo.jp/subway/timetable/shinjuku/S04ED.html
-    // https://www.kotsu.metro.tokyo.jp/subway/timetable/shinjuku/S04EH.html
-    static var ichigayaSchedule: [TimePoint] {
-        let weekday: [[Int]] = [
-            [6,29,42,57], [11,22,33,44,54], [1,8,14,20,24,29,34,39,45,51,56],
-            [1,6,10,14,18,22,25,29,32,36,40,44,47,51,54,58],
-            [1,5,8,13,17,21,26,29,33,37,42,46,50,55],
-            [0,5,11,16,21,27,33,38,44,50,56],
-            [2,8,14,20,26,32,38,44,50,56], [2,8,14,20,26,32,38,44,50,56],
-            [2,8,14,20,26,32,38,44,50,56], [2,8,14,20,26,32,38,44,50,56],
-            [2,8,14,20,25,31,36,41,46,51,56], [1,6,12,17,23,28,34,39,45,50,56],
-            [1,7,12,17,22,27,32,36,41,44,47,53,58],
-            [2,7,10,13,18,23,28,33,38,43,47,50,54],
-            [0,5,11,16,22,27,31,34,39,45,50,56], [1,7,13,19,25,32,38,45,51,58],
-            [5,12,19,25,31,38,45,52,59], [5,12,19,26,35,44,54], [5,16,26,36,44,53]
-        ]
-        let weekend: [[Int]] = [
-            [6,29,42,59], [12,22,33,44,54], [3,13,23,32,38,44,49,55],
-            [1,7,13,20,25,30,35,40,45,51,56], [2,7,13,18,23,28,33,39,44,49,55],
-            [1,7,12,18,23,29,34,39,45,51,56],
-            [1,7,12,18,23,28,33,39,45,51,56], [1,7,12,18,23,28,33,39,45,51,56],
-            [1,7,12,18,23,28,33,39,45,51,56], [1,7,12,18,23,28,33,39,45,51,56],
-            [1,7,12,18,23,28,33,39,45,51,56], [2,9,14,19,23,27,32,38,43,49,54,59],
-            [3,7,12,19,24,29,35,41,45,51,58], [5,10,14,20,26,32,38,42,47,52,58],
-            [4,11,18,25,32,38,45,52,58], [5,11,18,25,32,39,46,53],
-            [0,7,14,22,29,37,44,52], [0,9,17,26,39,51], [4,16,26,36,44,53]
-        ]
-
-        func points(_ hours: [[Int]], dayType: DayType) -> [TimePoint] {
-            let afterMidnight = TimePoint(hour: 0, min: 6, origin: "馬喰横山方面", dest: "大島", departure: "市ヶ谷", dayType: dayType)
-            return [afterMidnight] + hours.enumerated().flatMap { offset, minutes in
-                minutes.map { minute in
-                    TimePoint(hour: offset + 5, min: minute, origin: "馬喰横山方面", dest: "", departure: "市ヶ谷", dayType: dayType)
-                }
-            }
-        }
-        return points(weekday, dayType: .weekday) + points(weekend, dayType: .weekend)
-    }
+    ]
     
     // Define the class with two Int fields: hour and min
     class TimePoint {
@@ -539,7 +497,18 @@ struct Provider: AppIntentTimelineProvider {
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration, id: "東十条", origin: "東十条", departure: "東十条", dayType: .weekend)
+        if let entry = bakuroEntry(at: Date(), configuration: configuration) { return entry }
+        return SimpleEntry(date: Date(), configuration: configuration, id: "東十条", origin: "東十条", departure: "東十条", dayType: .weekend)
+    }
+
+    private func bakuroEntry(at date: Date, configuration: ConfigurationAppIntent) -> SimpleEntry? {
+        guard let route = BakuroRoute(rawValue: configuration.selectedStation.id) else { return nil }
+        let departures = BakuroTimetable.nextDepartures(for: route, after: date, count: 3)
+        let day = departures.first?.train.day ?? BakuroTimetable.dayType(on: BakuroTimetable.serviceDay(at: date))
+        return SimpleEntry(date: date, configuration: configuration, id: route.rawValue,
+            closestDate: departures.first?.date, secondClosestDate: departures.dropFirst().first?.date,
+            origin: departures.first?.train.label ?? "", departure: route.rawValue,
+            dayType: day == .weekday ? .weekday : .weekend, bakuroDepartures: departures)
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
@@ -549,8 +518,9 @@ struct Provider: AppIntentTimelineProvider {
         let entries = (0 ..< 60).map {
             let date = Calendar.current.date(byAdding: .second, value: $0 * 60 - 1, to: startDate)!
             let otherDate = Calendar.current.date(byAdding: .second, value: $0 * 60, to: startDate)!
-            let (first, second, origin, dayType) = getNextSchedule(now: otherDate, stationName: configuration.station.id)
-            return SimpleEntry(date: date, configuration: configuration, id: configuration.station.id, closestDate: first, secondClosestDate: second, origin: origin ?? "", departure: configuration.station.origin, dayType: dayType)
+            if let entry = bakuroEntry(at: otherDate, configuration: configuration) { return entry }
+            let (first, second, origin, dayType) = getNextSchedule(now: otherDate, stationName: configuration.selectedStation.id)
+            return SimpleEntry(date: date, configuration: configuration, id: configuration.selectedStation.id, closestDate: first, secondClosestDate: second, origin: origin ?? "", departure: configuration.selectedStation.origin, dayType: dayType)
         }
 
         return Timeline(entries: entries, policy: .atEnd)
@@ -629,12 +599,27 @@ struct SimpleEntry: TimelineEntry {
     let origin: String
     let departure: String
     let dayType: DayType
+    var bakuroDepartures: [BakuroDeparture]? = nil
 }
 
 struct custom_train_timetable_widgetEntryView : View {
     var entry: Provider.Entry
+    @Environment(\.widgetFamily) private var family
 
     var body: some View {
+        Group {
+            if let route = BakuroRoute(rawValue: entry.id), let departures = entry.bakuroDepartures {
+                BakuroWidgetContent(route: route, departures: departures, compact: family == .systemSmall)
+                    .widgetURL(URL(string: "custom-timetable://station/\(route == .bakurocho ? "bakurocho" : (route == .ichigaya ? "ichigaya" : "bakuroyokoyama"))"))
+                    .environment(\.colorScheme, .dark)
+            } else {
+                legacyBody
+            }
+        }
+        .containerBackground(.clear, for: .widget)
+    }
+
+    private var legacyBody: some View {
         HStack {
             VStack(alignment: .leading) {
                 Spacer()
@@ -670,9 +655,9 @@ struct custom_train_timetable_widgetEntryView : View {
                     .frame(width: 10, height: 10)
             }
             if entry.dayType == .weekday {
-                Text("平日\n\(entry.id)\n\(entry.origin)\(entry.id == "市ヶ谷" ? "" : "発")").font(.system(size: 14))
+                Text("平日\n\(entry.id)\n\(entry.origin)発").font(.system(size: 14))
             } else {
-                Text("休日\n\(entry.id)\n\(entry.origin)\(entry.id == "市ヶ谷" ? "" : "発")").font(.system(size: 14))
+                Text("休日\n\(entry.id)\n\(entry.origin)発").font(.system(size: 14))
             }
             if entry.closestDate != nil {
                 Text("\(entry.closestDate!, formatter: Self.dateFormatter)")
@@ -699,8 +684,13 @@ struct custom_train_timetable_widget: Widget {
 
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            custom_train_timetable_widgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+            if BakuroRoute(rawValue: entry.id) != nil {
+                custom_train_timetable_widgetEntryView(entry: entry)
+                    .containerBackground(for: .widget) { BakuroWidgetBackground() }
+            } else {
+                custom_train_timetable_widgetEntryView(entry: entry)
+                    .containerBackground(.fill.tertiary, for: .widget)
+            }
         }
     }
 }

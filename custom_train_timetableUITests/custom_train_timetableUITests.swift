@@ -1,41 +1,38 @@
-//
-//  custom_train_timetableUITests.swift
-//  custom_train_timetableUITests
-//
-//  Created by lvcha mmm on 2024/01/03.
-//
-
 import XCTest
 
 final class custom_train_timetableUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+    func testNewStationsWidgetPreviewAndWeekdayTimetables() {
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        let stations = app.segmentedControls["station-picker"]
+        XCTAssertTrue(stations.waitForExistence(timeout: 10))
+        stations.buttons["馬喰横山"].tap()
+        XCTAssertTrue(app.otherElements.containing(.staticText, identifier: "都営新宿線").firstMatch.exists
+                      || app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "都営新宿線")).firstMatch.exists)
+        app.segmentedControls.buttons["平日"].tap()
+        XCTAssertTrue(app.staticTexts["全時刻表 · 平日 · 8本"].exists)
+        let widgetScreenshot = XCTAttachment(screenshot: app.screenshot())
+        widgetScreenshot.name = "馬喰横山-左右2列ウィジェット"
+        widgetScreenshot.lifetime = .keepAlways
+        add(widgetScreenshot)
+        app.swipeUp()
+        XCTAssertTrue(app.staticTexts["急行 笹塚行き"].firstMatch.exists)
+        let screenshot = XCTAttachment(screenshot: app.screenshot())
+        screenshot.name = "馬喰横山-新宿止まりと急行"
+        screenshot.lifetime = .keepAlways
+        add(screenshot)
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+        app.swipeDown()
+        app.swipeDown()
+        stations.buttons["馬喰町"].tap()
+        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "総武快速線")).firstMatch.exists)
+        XCTAssertTrue(app.staticTexts["全時刻表 · 平日 · 38本"].exists)
+        app.segmentedControls.buttons["土休日"].tap()
+        XCTAssertTrue(app.staticTexts["全時刻表 · 土休日 · 31本"].exists)
+        let jrScreenshot = XCTAttachment(screenshot: app.screenshot())
+        jrScreenshot.name = "馬喰町-ウィジェットと東京止まり"
+        jrScreenshot.lifetime = .keepAlways
+        add(jrScreenshot)
     }
 }
